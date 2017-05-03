@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A040CDB1921AA79EEA833588 /* Pods_AppForYanpix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992AA16258D0DA4347D3F925 /* Pods_AppForYanpix.framework */; };
 		D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409EB41EBA472900393077 /* AppDelegate.swift */; };
-		D0409EB71EBA472900393077 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409EB61EBA472900393077 /* ViewController.swift */; };
-		D0409EBA1EBA472900393077 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0409EB81EBA472900393077 /* Main.storyboard */; };
 		D0409EBC1EBA472900393077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0409EBB1EBA472900393077 /* Assets.xcassets */; };
 		D0409EBF1EBA472900393077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0409EBD1EBA472900393077 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FA8A33D656782241C8DE5C3 /* Pods-AppForYanpix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppForYanpix.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppForYanpix/Pods-AppForYanpix.release.xcconfig"; sourceTree = "<group>"; };
+		37D6BAB0E073A4965FDC817C /* Pods-AppForYanpix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppForYanpix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppForYanpix/Pods-AppForYanpix.debug.xcconfig"; sourceTree = "<group>"; };
+		992AA16258D0DA4347D3F925 /* Pods_AppForYanpix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppForYanpix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0409EB11EBA472800393077 /* AppForYanpix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppForYanpix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0409EB41EBA472900393077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0409EB61EBA472900393077 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D0409EB91EBA472900393077 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0409EBB1EBA472900393077 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0409EBE1EBA472900393077 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0409EC01EBA472900393077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,17 +29,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A040CDB1921AA79EEA833588 /* Pods_AppForYanpix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581EED95D4F6C4A344D1BCE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37D6BAB0E073A4965FDC817C /* Pods-AppForYanpix.debug.xcconfig */,
+				1FA8A33D656782241C8DE5C3 /* Pods-AppForYanpix.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		92B6DDA5C181F2FC47F10997 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				992AA16258D0DA4347D3F925 /* Pods_AppForYanpix.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D0409EA81EBA472800393077 = {
 			isa = PBXGroup;
 			children = (
 				D0409EB31EBA472800393077 /* AppForYanpix */,
 				D0409EB21EBA472800393077 /* Products */,
+				581EED95D4F6C4A344D1BCE0 /* Pods */,
+				92B6DDA5C181F2FC47F10997 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,28 @@
 		D0409EB31EBA472800393077 /* AppForYanpix */ = {
 			isa = PBXGroup;
 			children = (
+				D0409EC61EBA47E600393077 /* Application Layer */,
+				D0409EC71EBA47F300393077 /* Supporting Files */,
+			);
+			path = AppForYanpix;
+			sourceTree = "<group>";
+		};
+		D0409EC61EBA47E600393077 /* Application Layer */ = {
+			isa = PBXGroup;
+			children = (
 				D0409EB41EBA472900393077 /* AppDelegate.swift */,
-				D0409EB61EBA472900393077 /* ViewController.swift */,
-				D0409EB81EBA472900393077 /* Main.storyboard */,
+			);
+			name = "Application Layer";
+			sourceTree = "<group>";
+		};
+		D0409EC71EBA47F300393077 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				D0409EBB1EBA472900393077 /* Assets.xcassets */,
 				D0409EBD1EBA472900393077 /* LaunchScreen.storyboard */,
 				D0409EC01EBA472900393077 /* Info.plist */,
 			);
-			path = AppForYanpix;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +105,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0409EC31EBA472900393077 /* Build configuration list for PBXNativeTarget "AppForYanpix" */;
 			buildPhases = (
+				CC3CE007C75835DC061A19A6 /* [CP] Check Pods Manifest.lock */,
 				D0409EAD1EBA472800393077 /* Sources */,
 				D0409EAE1EBA472800393077 /* Frameworks */,
 				D0409EAF1EBA472800393077 /* Resources */,
+				67398A0633D9945F2F450041 /* [CP] Embed Pods Frameworks */,
+				C9D15547D7989CC1D650A6E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,18 +162,64 @@
 			files = (
 				D0409EBF1EBA472900393077 /* LaunchScreen.storyboard in Resources */,
 				D0409EBC1EBA472900393077 /* Assets.xcassets in Resources */,
-				D0409EBA1EBA472900393077 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67398A0633D9945F2F450041 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppForYanpix/Pods-AppForYanpix-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9D15547D7989CC1D650A6E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppForYanpix/Pods-AppForYanpix-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC3CE007C75835DC061A19A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0409EAD1EBA472800393077 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0409EB71EBA472900393077 /* ViewController.swift in Sources */,
 				D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +227,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D0409EB81EBA472900393077 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0409EB91EBA472900393077 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D0409EBD1EBA472900393077 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -256,6 +331,7 @@
 		};
 		D0409EC41EBA472900393077 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37D6BAB0E073A4965FDC817C /* Pods-AppForYanpix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AppForYanpix/Info.plist;
@@ -268,6 +344,7 @@
 		};
 		D0409EC51EBA472900393077 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA8A33D656782241C8DE5C3 /* Pods-AppForYanpix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AppForYanpix/Info.plist;
