@@ -11,12 +11,12 @@ import UIKit
 class AFYInitialViewController: UIViewController, UIWebViewDelegate {
     
     struct SegueIdentifier {
-        static let toMainScete = "SegueToMainScene"
+        static let toMainScene = "SegueToMainScene"
         
         private init() {}
     }
 
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet weak var webView: UIWebView!
     
     fileprivate let applicationManager = AFYApplicationManager.instance()
     
@@ -35,9 +35,11 @@ class AFYInitialViewController: UIViewController, UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         applicationManager.instagramFeedService.saveToken(_from: request)
-//        if !applicationManager.instagramFeedService.needsShowCredentialsForm {
-//            performSegue(withIdentifier: SegueIdentifier.toMainScete, sender: nil)
-//        }
+        // We need to show webView's request result ONLY when we don't have user token. 
+        // Under no circumstances let user see redirection URI result!
+        if !applicationManager.instagramFeedService.needsShowCredentialsForm {
+            performSegue(withIdentifier: SegueIdentifier.toMainScene, sender: nil)
+        }
         return applicationManager.instagramFeedService.needsShowCredentialsForm
     }
 

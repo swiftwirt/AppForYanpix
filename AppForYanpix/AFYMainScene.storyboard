@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OwO-LI-gax">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,59 @@
                         <viewControllerLayoutGuide type="bottom" id="e0R-qE-eUe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wqj-GO-Z2L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qO1-au-lSC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to get photoes from place" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6E-Sg-un9">
+                                <rect key="frame" x="70" y="51" width="179" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivv-dS-vKc">
+                                <rect key="frame" x="77" y="493" width="172" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.98038345579999997" green="0.92014457999999999" blue="0.80106576620000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Use Current Location">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPressedUseCurrentLocationButton:" destination="OwO-LI-gax" eventType="touchUpInside" id="etf-FA-5K6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bkb-cB-TVE">
+                                <rect key="frame" x="139" y="464" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e0R-qE-eUe" firstAttribute="top" secondItem="qO1-au-lSC" secondAttribute="bottom" id="3x7-8B-fuo"/>
+                            <constraint firstItem="qO1-au-lSC" firstAttribute="leading" secondItem="Wqj-GO-Z2L" secondAttribute="leading" id="9UL-ek-rrU"/>
+                            <constraint firstItem="qO1-au-lSC" firstAttribute="centerX" secondItem="Wqj-GO-Z2L" secondAttribute="centerX" id="H48-s6-T01"/>
+                            <constraint firstItem="qO1-au-lSC" firstAttribute="top" secondItem="Wqj-GO-Z2L" secondAttribute="top" id="Qdn-65-Kav"/>
+                            <constraint firstAttribute="trailing" secondItem="qO1-au-lSC" secondAttribute="trailing" id="TOs-oh-al9"/>
+                            <constraint firstItem="qO1-au-lSC" firstAttribute="centerY" secondItem="Wqj-GO-Z2L" secondAttribute="centerY" id="hhr-Oa-l6D"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="E95-iM-Q1B"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="qO1-au-lSC" id="Izq-sh-ph8"/>
+                        <outlet property="useCurrentLocationButton" destination="ivv-dS-vKc" id="pDf-Vq-dLh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZW7-hD-30T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-34" y="140"/>
+            <point key="canvasLocation" x="672.79999999999995" y="139.880059970015"/>
         </scene>
     </scenes>
 </document>

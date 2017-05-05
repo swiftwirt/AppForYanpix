@@ -38,5 +38,4 @@ class AFYApplicationManager {
             defaults.set(true, forKey: key)
         }
     }
-
 }

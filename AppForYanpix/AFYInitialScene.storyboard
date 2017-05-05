@@ -21,6 +21,8 @@
                             <outlet property="delegate" destination="csu-Yq-tuW" id="Whi-pM-ARI"/>
                         </connections>
                     </webView>
+                    <navigationItem key="navigationItem" id="obQ-aQ-f1z"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="webView" destination="uyd-hP-Zsm" id="VbS-S2-CvX"/>
                         <segue destination="QCS-Nj-tRK" kind="presentation" identifier="SegueToMainScene" id="blX-8c-hDl"/>
@@ -28,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNc-YJ-Cjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-103.2" y="114.69265367316342"/>
+            <point key="canvasLocation" x="606" y="113"/>
         </scene>
         <!--AFYMainScene-->
         <scene sceneID="3cu-Ov-nef">
@@ -36,7 +38,7 @@
                 <viewControllerPlaceholder storyboardName="AFYMainScene" id="QCS-Nj-tRK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEe-TH-UWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="114"/>
+            <point key="canvasLocation" x="1143" y="114"/>
         </scene>
     </scenes>
 </document>

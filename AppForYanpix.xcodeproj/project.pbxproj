@@ -19,6 +19,7 @@
 		D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */; };
 		D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */; };
 		D0843FD11EBC7353009265B8 /* AFYMainScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */; };
+		D0843FD41EBC997B009265B8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FD31EBC997B009265B8 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYLocationService.swift; sourceTree = "<group>"; };
 		D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewController.swift; sourceTree = "<group>"; };
 		D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AFYMainScene.storyboard; sourceTree = "<group>"; };
+		D0843FD31EBC997B009265B8 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		D0409EB31EBA472800393077 /* AppForYanpix */ = {
 			isa = PBXGroup;
 			children = (
+				D0843FD21EBC995D009265B8 /* Models */,
 				D0409ECD1EBA51A600393077 /* Presentation */,
 				D0409ECA1EBA4EF600393077 /* Services */,
 				D0409EC61EBA47E600393077 /* Application Layer */,
@@ -152,6 +155,14 @@
 				D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */,
 			);
 			name = "Main Scene";
+			sourceTree = "<group>";
+		};
+		D0843FD21EBC995D009265B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0843FD31EBC997B009265B8 /* Location.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +297,7 @@
 			files = (
 				D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */,
 				D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */,
+				D0843FD41EBC997B009265B8 /* Location.swift in Sources */,
 				D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */,
 				D0409EC91EBA4DFD00393077 /* AFYApplicationManager.swift in Sources */,
 				D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */,
