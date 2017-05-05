@@ -29,4 +29,8 @@ class AFYKeychainService
         }
         return token
     }
+    
+    func clear() {
+        self.keychain.delete(Consts.token.rawValue)
+    }
 }

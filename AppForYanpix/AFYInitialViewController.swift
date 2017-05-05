@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol ModalDismissable {
-    var modalDismissable: Bool { get set }
-}
-
-class AFYInitialViewController: UIViewController, UIWebViewDelegate, ModalDismissable {
+class AFYInitialViewController: UIViewController, UIWebViewDelegate {
+    
+    struct SegueIdentifier {
+        static let toMainScete = "SegueToMainScene"
+        
+        private init() {}
+    }
 
     @IBOutlet var webView: UIWebView!
     
     fileprivate let applicationManager = AFYApplicationManager.instance()
-    
-    var modalDismissable: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,9 @@ class AFYInitialViewController: UIViewController, UIWebViewDelegate, ModalDismis
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         applicationManager.instagramFeedService.saveToken(_from: request)
-        if !applicationManager.instagramFeedService.needsShowCredentialsForm {
-            applicationManager.applicationRouter.display(<#T##viewController: ModalDismissable##ModalDismissable#>)
-        }
+//        if !applicationManager.instagramFeedService.needsShowCredentialsForm {
+//            performSegue(withIdentifier: SegueIdentifier.toMainScete, sender: nil)
+//        }
         return applicationManager.instagramFeedService.needsShowCredentialsForm
     }
 

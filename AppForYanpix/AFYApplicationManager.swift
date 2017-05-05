@@ -16,10 +16,7 @@ class AFYApplicationManager {
         return applicationDelegate.applicationManager
     }
     
-    lazy var applicationRouter: AFYApplicationRouter = {
-        let router = AFYApplicationRouter()
-        return router
-    }()
+    let keychain = AFYKeychainService()
     
     lazy var locationService: AFYLocationService = {
         let service = AFYLocationService()
@@ -30,5 +27,16 @@ class AFYApplicationManager {
         let service = AFYInstagramFeedService()
         return service
     }()
+    
+    func clearKeychainIfThisIsTheFirstRun()
+    {
+        let defaults = UserDefaults.standard
+        let key = "firstRunComplete"
+        let firstRunComplete = defaults.bool(forKey: key)
+        if !firstRunComplete {
+            keychain.clear()
+            defaults.set(true, forKey: key)
+        }
+    }
 
 }

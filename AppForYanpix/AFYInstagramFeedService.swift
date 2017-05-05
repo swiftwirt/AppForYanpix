@@ -55,10 +55,10 @@ class AFYInstagramFeedService {
     }
     
     var needsShowCredentialsForm: Bool {
-        return keychainService.getToken() == nil ? true : false
+        return applicationManager.keychain.getToken() == nil ? true : false
     }
 
-    fileprivate let keychainService = AFYKeychainService()
+    fileprivate let applicationManager = AFYApplicationManager.instance()
     
     func saveToken(_from request: URLRequest)
     {
@@ -67,7 +67,7 @@ class AFYInstagramFeedService {
         if urlParts.count > 1 {
             let token = urlParts[1]
             print("***** token : \(token) ")
-            keychainService.saveToken(token: token)
+            applicationManager.keychain.saveToken(token: token)
         }
     }
 }
