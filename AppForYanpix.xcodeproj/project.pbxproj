@@ -11,6 +11,16 @@
 		D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409EB41EBA472900393077 /* AppDelegate.swift */; };
 		D0409EBC1EBA472900393077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0409EBB1EBA472900393077 /* Assets.xcassets */; };
 		D0409EBF1EBA472900393077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0409EBD1EBA472900393077 /* LaunchScreen.storyboard */; };
+		D0409EC91EBA4DFD00393077 /* AFYApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409EC81EBA4DFD00393077 /* AFYApplicationManager.swift */; };
+		D0409ECC1EBA50D900393077 /* AFYKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409ECB1EBA50D900393077 /* AFYKeychainService.swift */; };
+		D0409ED01EBA51E300393077 /* AFYInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0409ECF1EBA51E300393077 /* AFYInitialViewController.swift */; };
+		D0409ED21EBA524700393077 /* AFYInitialScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0409ED11EBA524700393077 /* AFYInitialScene.storyboard */; };
+		D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */; };
+		D0843FC81EBC4D0F009265B8 /* AFYApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC71EBC4D0F009265B8 /* AFYApiService.swift */; };
+		D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */; };
+		D0843FCC1EBC7124009265B8 /* AFYApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCB1EBC7124009265B8 /* AFYApplicationRouter.swift */; };
+		D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */; };
+		D0843FD11EBC7353009265B8 /* AFYMainScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +32,16 @@
 		D0409EBB1EBA472900393077 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0409EBE1EBA472900393077 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0409EC01EBA472900393077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0409EC81EBA4DFD00393077 /* AFYApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYApplicationManager.swift; sourceTree = "<group>"; };
+		D0409ECB1EBA50D900393077 /* AFYKeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYKeychainService.swift; sourceTree = "<group>"; };
+		D0409ECF1EBA51E300393077 /* AFYInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYInitialViewController.swift; sourceTree = "<group>"; };
+		D0409ED11EBA524700393077 /* AFYInitialScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AFYInitialScene.storyboard; sourceTree = "<group>"; };
+		D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYInstagramFeedService.swift; sourceTree = "<group>"; };
+		D0843FC71EBC4D0F009265B8 /* AFYApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYApiService.swift; sourceTree = "<group>"; };
+		D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYLocationService.swift; sourceTree = "<group>"; };
+		D0843FCB1EBC7124009265B8 /* AFYApplicationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYApplicationRouter.swift; sourceTree = "<group>"; };
+		D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewController.swift; sourceTree = "<group>"; };
+		D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AFYMainScene.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +94,8 @@
 		D0409EB31EBA472800393077 /* AppForYanpix */ = {
 			isa = PBXGroup;
 			children = (
+				D0409ECD1EBA51A600393077 /* Presentation */,
+				D0409ECA1EBA4EF600393077 /* Services */,
 				D0409EC61EBA47E600393077 /* Application Layer */,
 				D0409EC71EBA47F300393077 /* Supporting Files */,
 			);
@@ -84,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				D0409EB41EBA472900393077 /* AppDelegate.swift */,
+				D0409EC81EBA4DFD00393077 /* AFYApplicationManager.swift */,
+				D0843FCB1EBC7124009265B8 /* AFYApplicationRouter.swift */,
 			);
 			name = "Application Layer";
 			sourceTree = "<group>";
@@ -96,6 +120,44 @@
 				D0409EC01EBA472900393077 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0409ECA1EBA4EF600393077 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D0409ECB1EBA50D900393077 /* AFYKeychainService.swift */,
+				D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */,
+				D0843FC71EBC4D0F009265B8 /* AFYApiService.swift */,
+				D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		D0409ECD1EBA51A600393077 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D0843FCD1EBC7313009265B8 /* Main Scene */,
+				D0409ECE1EBA51BE00393077 /* Initial Scene */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		D0409ECE1EBA51BE00393077 /* Initial Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D0409ECF1EBA51E300393077 /* AFYInitialViewController.swift */,
+				D0409ED11EBA524700393077 /* AFYInitialScene.storyboard */,
+			);
+			name = "Initial Scene";
+			sourceTree = "<group>";
+		};
+		D0843FCD1EBC7313009265B8 /* Main Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */,
+				D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */,
+			);
+			name = "Main Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +195,13 @@
 				TargetAttributes = {
 					D0409EB01EBA472800393077 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = WF866KSYF8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -162,6 +230,8 @@
 			files = (
 				D0409EBF1EBA472900393077 /* LaunchScreen.storyboard in Resources */,
 				D0409EBC1EBA472900393077 /* Assets.xcassets in Resources */,
+				D0843FD11EBC7353009265B8 /* AFYMainScene.storyboard in Resources */,
+				D0409ED21EBA524700393077 /* AFYInitialScene.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */,
 				D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */,
+				D0843FCC1EBC7124009265B8 /* AFYApplicationRouter.swift in Sources */,
+				D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */,
+				D0409EC91EBA4DFD00393077 /* AFYApplicationManager.swift in Sources */,
+				D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */,
+				D0409ECC1EBA50D900393077 /* AFYKeychainService.swift in Sources */,
+				D0409ED01EBA51E300393077 /* AFYInitialViewController.swift in Sources */,
+				D0843FC81EBC4D0F009265B8 /* AFYApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +412,7 @@
 			baseConfigurationReference = 37D6BAB0E073A4965FDC817C /* Pods-AppForYanpix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WF866KSYF8;
 				INFOPLIST_FILE = AppForYanpix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyCompany.AppForYanpix;
@@ -347,6 +426,7 @@
 			baseConfigurationReference = 1FA8A33D656782241C8DE5C3 /* Pods-AppForYanpix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WF866KSYF8;
 				INFOPLIST_FILE = AppForYanpix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyCompany.AppForYanpix;
@@ -374,6 +454,7 @@
 				D0409EC51EBA472900393077 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
