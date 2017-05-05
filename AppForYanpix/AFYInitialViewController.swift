@@ -20,9 +20,13 @@ class AFYInitialViewController: UIViewController, UIWebViewDelegate {
     
     fileprivate let applicationManager = AFYApplicationManager.instance()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        performRequest()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !applicationManager.instagramFeedService.needsShowCredentialsForm {
+            performSegue(withIdentifier: SegueIdentifier.toMainScene, sender: nil)
+        }else {
+            performRequest()
+        }
     }
     
     // MARK: - Main methods

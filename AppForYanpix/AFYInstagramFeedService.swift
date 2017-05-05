@@ -7,7 +7,12 @@
 //
 
 import UIKit
-import Alamofire    
+import Alamofire
+
+enum InstagramFeedResult<T> {
+    case success(T)
+    case failure(Error)
+}
 
 class AFYInstagramFeedService {
     
@@ -18,7 +23,14 @@ class AFYInstagramFeedService {
         static let redirectURI = "&redirect_uri=https://www.instagram.com/developer/clients/register/"
         static let responseTypeCode = "&response_type=code"
         static let responseTypeToken = "&response_type=token"
-        static let accessToken = "#access_token="
+        static let accessToken = "&access_token="
+        static let separatorToken = "#access_token="
+        static let version = "v1/"
+        static let locations = "locations/"
+        static let search = "search?"
+        static let latitude = "lat="
+        static let longitude = "&lng="
+        static let recentMedia = "/media/recent?access_token="
         static let scope = "&scope="
         static let scopeBasic = "basic"
         static let scopePublicContent = "+public_content"
@@ -30,18 +42,9 @@ class AFYInstagramFeedService {
         private init() {}
     }
     
-//    enum JSONKey: String {
-//        case email = "email"
-//        case userName = "username"
-//        case password = "password"
-//        case avatar = "avatar"
-//        case weather = "weather"
-//        case image = "image"
-//        case description = "description"
-//        case hashtag = "hashtag"
-//        case latitude = "latitude"
-//        case longitude = "longitude"
-//    }
+    struct JSONKey {
+        static let data = "data"
+    }
     
     var tokenRequest: URLRequest? {
         let urlString = EndPoint.baseUrl + EndPoint.authorize + EndPoint.clientID
@@ -63,11 +66,46 @@ class AFYInstagramFeedService {
     func saveToken(_from request: URLRequest)
     {
         let urlString: String = request.url!.absoluteString
-        let urlParts: [String] = urlString.components(separatedBy: EndPoint.accessToken)
+        let urlParts: [String] = urlString.components(separatedBy: EndPoint.separatorToken)
         if urlParts.count > 1 {
             let token = urlParts[1]
             print("***** token : \(token) ")
             applicationManager.keychain.saveToken(token: token)
+        }
+    }
+    
+    func getPhotosFor(locationID: String, completionHandler: @escaping (InstagramFeedResult<Any>) -> ())
+    {
+        guard let token = applicationManager.keychain.getToken() else { return }
+        let url = EndPoint.baseUrl + EndPoint.version + EndPoint.locations + locationID + EndPoint.recentMedia + token
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response: DataResponse<Any>) in
+            switch(response.result) {
+            case .success(let value):
+                guard let dataDictionary = value as? [String: Any], let data = dataDictionary[JSONKey.data] as? [[String: Any]] else { return }
+                completionHandler(InstagramFeedResult.success(data))
+            case .failure(let error):
+                completionHandler(InstagramFeedResult.failure(error))
+            }
+        }
+    }
+    
+    func getLocationIDs(latitude: Float, and longitude: Float, completionHandler: @escaping (InstagramFeedResult<Any>) -> ())
+    {
+        guard let token = applicationManager.keychain.getToken() else { return }
+        let url = EndPoint.baseUrl + EndPoint.version + EndPoint.locations
+            + EndPoint.search + EndPoint.latitude + String(latitude)
+            + EndPoint.longitude + String(longitude) + EndPoint.accessToken + token
+        
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: nil).responseJSON { (response: DataResponse<Any>) in
+            
+            switch(response.result) {
+            case .success(let value):
+                guard let dataDictionary = value as? [String: Any], let data = dataDictionary[JSONKey.data] as? [[String: Any]] else { return }
+                completionHandler(InstagramFeedResult.success(data))
+            case .failure(let error):
+                completionHandler(InstagramFeedResult.failure(error))
+            }
         }
     }
 }

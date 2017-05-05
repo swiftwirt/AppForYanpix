@@ -21,14 +21,32 @@ class AFYMainViewController: UIViewController {
     fileprivate var photoesLocations = [Location]()
     fileprivate var currentLocation: CLLocation? {
         didSet {
-            
+            applicationManager.instagramFeedService.getLocationIDs(latitude: Float(currentLocation!.coordinate.latitude), and: Float(currentLocation!.coordinate.longitude)) { (result) in
+                switch result {
+                case .success(let value):
+                    guard let data = value as? [[String: Any]] else { return }
+                    let semaphore = DispatchSemaphore(value: 0)
+                    DispatchQueue.global(qos: .background).async {
+                        for location in data {
+                            guard let id = location["id"] as? String else { return }
+                            self.applicationManager.instagramFeedService.getPhotosFor(locationID: id, completionHandler: { (result) in
+                                switch result {
+                                case .success(let data):
+                                    print("***** !!!! \(data)")
+                                    semaphore.signal()
+                                case .failure(let error):
+                                    print(error)
+                                    semaphore.signal()
+                                }
+                            })
+                        }
+                        semaphore.wait()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     fileprivate func showLocations()
@@ -77,12 +95,11 @@ class AFYMainViewController: UIViewController {
     
     fileprivate func getLocation()
     {
-        applicationManager.locationService.locationServiceCoordinatesResult = { [weak self] (result) in
-            guard let strongSelf = self else { return }
+        applicationManager.locationService.locationServiceCoordinatesResult = { (result) in
             switch result {
             case .success(let value):
                 if let coordinates = value as? CLLocation {
-                    strongSelf.currentLocation = coordinates
+                    self.currentLocation = coordinates
                 } else {
                     print("***** Weird error occured! No CLLocation Data =(")
                     HUD.flash(.error)

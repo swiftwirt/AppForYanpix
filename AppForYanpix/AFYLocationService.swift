@@ -24,12 +24,11 @@ class AFYLocationService: NSObject {
     
     fileprivate var timer: Timer?
     
-    override init() {
-        super.init()
-        getCurrentLoacation()
+    var locationServiceCoordinatesResult: ((LocationResult<Any>) -> ())? {
+        didSet {
+            getCurrentLoacation()
+        }
     }
-    
-    var locationServiceCoordinatesResult: ((LocationResult<Any>) -> ())?
     
     fileprivate func getCurrentLoacation()
     {
