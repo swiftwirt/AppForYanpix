@@ -28,11 +28,11 @@ class AFYMainViewController: UIViewController {
                     guard let data = value as? [[String: Any]] else { return }
                     let semaphore = DispatchSemaphore(value: 0)
                     DispatchQueue.global(qos: .background).async {
+                        self.photoesLocations = [Location]()
                         for location in data {
                             print(location)
                             guard let id = location["id"] as? String else {
                                 semaphore.signal();
-                                print("***** fuck")
                                 return
                             }
                             self.applicationManager.instagramFeedService.getPhotosFor(locationID: id, completionHandler: { (result) in
@@ -41,15 +41,24 @@ class AFYMainViewController: UIViewController {
                                     print("***** !!!! \(data)")
                                     guard let dictArray = data as? [[String: Any]] else {
                                         semaphore.signal();
-                                        print("***** fuck you")
                                         return
                                     }
-                                    for item in dictArray {
+                                    outerloop: for item in dictArray {
                                         guard item.count > 0 else { continue }
                                         let location = Location(_with: item)
-                                        if !self.photoesLocations.contains(location) {
-                                            self.photoesLocations.append(location)
+
+                                        for compoundLocation in self.photoesLocations {
+                                            if compoundLocation.locationID == location.locationID {
+                                                let index = self.photoesLocations.index(of: compoundLocation)
+                                                let updatedLocation = compoundLocation
+                                                updatedLocation.imageLinks += location.imageLinks
+                                                updatedLocation.title = String(updatedLocation.imageLinks.count)
+                                                updatedLocation.subtitle = nil
+                                                self.photoesLocations[index!] = updatedLocation
+                                                continue outerloop
+                                            }
                                         }
+                                        self.photoesLocations.append(location)
                                     }
                                     semaphore.signal()
                                 case .failure(let error):
@@ -59,8 +68,6 @@ class AFYMainViewController: UIViewController {
                             })
                             semaphore.wait()
                         }
-                        
-                        
                         DispatchQueue.main.async {
                             self.updateLocations()
                             self.showLocations()

@@ -12,16 +12,11 @@ import MapKit
 
 class Location: NSObject, MKAnnotation {
     
-    static func ==(lhs:Location, rhs:Location) -> Bool
-    {
-        return lhs.locationID == rhs.locationID
-    }
-    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
-    var locationID: String?
-    var imageLink: URL?
+    var locationID: String = ""
+    var imageLinks = [URL?]()
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String)
     {
@@ -43,7 +38,7 @@ class Location: NSObject, MKAnnotation {
         let imageThumbnailDictionary = imageDictionary["thumbnail"] as! [String: Any]
         let link = imageThumbnailDictionary["url"] as! String
         
-        self.imageLink = URL(string: link)
+        self.imageLinks.append(URL(string: link))
         self.title = user["full_name"] as? String
         self.subtitle = location["name"] as? String
         self.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Float64, longitude: location["longitude"] as! Float64)
