@@ -78,6 +78,15 @@ class AFYInstagramFeedService {
     {
         guard let token = applicationManager.keychain.getToken() else { return }
         let url = EndPoint.baseUrl + EndPoint.version + EndPoint.locations + locationID + EndPoint.recentMedia + token
+        // TODO: add normal error handling manager
+        if Int(locationID) == 0 {
+            
+            enum Failure: Error {
+                case noLocation
+            }
+            
+            completionHandler(InstagramFeedResult.failure(Failure.noLocation))
+        }
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response: DataResponse<Any>) in
             switch(response.result) {

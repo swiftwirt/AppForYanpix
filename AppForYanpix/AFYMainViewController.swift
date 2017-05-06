@@ -17,30 +17,54 @@ class AFYMainViewController: UIViewController {
     @IBOutlet weak var useCurrentLocationButton: UIButton!
     
     fileprivate var applicationManager = AFYApplicationManager.instance()
-    
+
     fileprivate var photoesLocations = [Location]()
+    
     fileprivate var currentLocation: CLLocation? {
         didSet {
-            applicationManager.instagramFeedService.getLocationIDs(latitude: Float(currentLocation!.coordinate.latitude), and: Float(currentLocation!.coordinate.longitude)) { (result) in
+            self.applicationManager.instagramFeedService.getLocationIDs(latitude: Float(self.currentLocation!.coordinate.latitude), and: Float(self.currentLocation!.coordinate.longitude)) { (result) in
                 switch result {
                 case .success(let value):
                     guard let data = value as? [[String: Any]] else { return }
                     let semaphore = DispatchSemaphore(value: 0)
                     DispatchQueue.global(qos: .background).async {
                         for location in data {
-                            guard let id = location["id"] as? String else { return }
+                            print(location)
+                            guard let id = location["id"] as? String else {
+                                semaphore.signal();
+                                print("***** fuck")
+                                return
+                            }
                             self.applicationManager.instagramFeedService.getPhotosFor(locationID: id, completionHandler: { (result) in
                                 switch result {
                                 case .success(let data):
                                     print("***** !!!! \(data)")
+                                    guard let dictArray = data as? [[String: Any]] else {
+                                        semaphore.signal();
+                                        print("***** fuck you")
+                                        return
+                                    }
+                                    for item in dictArray {
+                                        guard item.count > 0 else { continue }
+                                        let location = Location(_with: item)
+                                        if !self.photoesLocations.contains(location) {
+                                            self.photoesLocations.append(location)
+                                        }
+                                    }
                                     semaphore.signal()
                                 case .failure(let error):
-                                    print(error)
+                                    print("***** !!!! \(error)")
                                     semaphore.signal()
                                 }
                             })
+                            semaphore.wait()
                         }
-                        semaphore.wait()
+                        
+                        
+                        DispatchQueue.main.async {
+                            self.updateLocations()
+                            self.showLocations()
+                        }
                     }
                 case .failure(let error):
                     print(error)
@@ -53,6 +77,12 @@ class AFYMainViewController: UIViewController {
     {
         let region = regionForAnnotations(photoesLocations)
         mapView.setRegion(region, animated: true)
+    }
+    
+    fileprivate func updateLocations()
+    {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(photoesLocations)
     }
     
     fileprivate func regionForAnnotations(_ annotations: [MKAnnotation]) -> MKCoordinateRegion
@@ -110,9 +140,55 @@ class AFYMainViewController: UIViewController {
             }
         }
     }
+    
+    func showPhotoes()
+    {
+        // TODO: - add segue
+    }
 
     @IBAction func onPressedUseCurrentLocationButton(_ sender: Any)
     {
         getLocation()
     }
 }
+
+extension AFYMainViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is Location else {
+            return nil
+        }
+        
+        let identifier = "Location"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as! MKPinAnnotationView!
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            
+            annotationView?.isEnabled = true
+            annotationView?.canShowCallout = true
+            annotationView?.animatesDrop = false
+            annotationView?.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+            annotationView?.tintColor = UIColor(white: 0.0, alpha: 0.5)
+            
+            let rightButton = UIButton(type: .detailDisclosure)
+            rightButton.addTarget(self, action: #selector(showPhotoes), for: .touchUpInside)
+            annotationView?.rightCalloutAccessoryView = rightButton
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let button = annotationView?.rightCalloutAccessoryView as! UIButton
+        if let index = photoesLocations.index(of: annotation as! Location) {
+            button.tag = index
+        }
+        
+        return annotationView
+    }
+}
+
+extension AFYMainViewController: UINavigationBarDelegate {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}
+
