@@ -10,6 +10,9 @@ import UIKit
 
 class AFYApplicationManager {
     
+    //Constants
+    let firstRunKey = "firstRunComplete"
+    
     static func instance() -> AFYApplicationManager
     {
         guard let applicationDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -31,7 +34,7 @@ class AFYApplicationManager {
     func clearKeychainIfThisIsTheFirstRun()
     {
         let defaults = UserDefaults.standard
-        let key = "firstRunComplete"
+        let key = firstRunKey
         let firstRunComplete = defaults.bool(forKey: key)
         if !firstRunComplete {
             keychain.clear()

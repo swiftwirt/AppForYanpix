@@ -12,6 +12,21 @@ import MapKit
 
 class Location: NSObject, MKAnnotation {
     
+    struct JSONKey {
+        static let user = "user"
+        static let location = "location"
+        static let images = "images"
+        static let thumbnail = "thumbnail"
+        static let url = "url"
+        static let fullName = "full_name"
+        static let name = "name"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let id = "id"
+        
+        private init() {}
+    }
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
@@ -27,7 +42,7 @@ class Location: NSObject, MKAnnotation {
     
     init(_with dictionary: [String: Any])
     {
-        guard let user = dictionary["user"] as? [String: Any], let location = dictionary["location"] as? [String: Any], let imageDictionary = dictionary["images"] as? [String: Any]  else {
+        guard let user = dictionary[JSONKey.user] as? [String: Any], let location = dictionary[JSONKey.location] as? [String: Any], let imageDictionary = dictionary[JSONKey.images] as? [String: Any]  else {
             self.title = ""
             self.subtitle = ""
             self.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees.abs(0.0), longitude:  CLLocationDegrees.abs(0.0))
@@ -35,15 +50,15 @@ class Location: NSObject, MKAnnotation {
             return
         }
         
-        let imageThumbnailDictionary = imageDictionary["thumbnail"] as! [String: Any]
-        let link = imageThumbnailDictionary["url"] as! String
+        let imageThumbnailDictionary = imageDictionary[JSONKey.thumbnail] as! [String: Any]
+        let link = imageThumbnailDictionary[JSONKey.url] as! String
         
         self.imageLinks.append(URL(string: link))
-        self.title = user["full_name"] as? String
-        self.subtitle = location["name"] as? String
-        self.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Float64, longitude: location["longitude"] as! Float64)
+        self.title = user[JSONKey.fullName] as? String
+        self.subtitle = location[JSONKey.name] as? String
+        self.coordinate = CLLocationCoordinate2D(latitude: location[JSONKey.latitude] as! Float64, longitude: location[JSONKey.longitude] as! Float64)
         
-        self.locationID = String(location["id"] as! UInt64)
+        self.locationID = String(location[JSONKey.id] as! UInt64)
         super.init()
     }
 }

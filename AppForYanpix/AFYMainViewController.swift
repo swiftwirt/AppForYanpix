@@ -13,6 +13,25 @@ import PKHUD
 
 class AFYMainViewController: UIViewController {
     
+    struct SegueIdentifier {
+        static let toPhotoes = "SegueToPhotoes"
+        
+        private init() {}
+    }
+    
+    struct ReuseIdentifier {
+        static let location = "Location"
+        
+        private init() {}
+    }
+    
+    struct Color {
+        static let pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+        static let tintColor = UIColor(white: 0.0, alpha: 0.5)
+
+        private init() {}
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var useCurrentLocationButton: UIButton!
     
@@ -157,11 +176,11 @@ class AFYMainViewController: UIViewController {
     
     func showPhotoes(_ sender: UIButton)
     {
-        performSegue(withIdentifier: "SegueToPhotoes", sender: sender)
+        performSegue(withIdentifier: SegueIdentifier.toPhotoes, sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SegueToPhotoes" {
+        if segue.identifier == SegueIdentifier.toPhotoes {
             let controller = segue.destination as! AFYPhotoesCollectionViewController
             
             let button = sender as! UIButton
@@ -192,7 +211,7 @@ extension AFYMainViewController: MKMapViewDelegate {
             return nil
         }
         
-        let identifier = "Location"
+        let identifier = ReuseIdentifier.location
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as! MKPinAnnotationView!
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -200,8 +219,8 @@ extension AFYMainViewController: MKMapViewDelegate {
             annotationView?.isEnabled = true
             annotationView?.canShowCallout = true
             annotationView?.animatesDrop = false
-            annotationView?.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
-            annotationView?.tintColor = UIColor(white: 0.0, alpha: 0.5)
+            annotationView?.pinTintColor = Color.pinTintColor
+            annotationView?.tintColor = Color.tintColor
             
             let rightButton = UIButton(frame: annotationView!.frame)
             rightButton.setImage(#imageLiteral(resourceName: "icon_eye"), for: .normal)

@@ -44,6 +44,8 @@ class AFYInstagramFeedService {
     
     struct JSONKey {
         static let data = "data"
+        
+        private init() {}
     }
     
     var tokenRequest: URLRequest? {

@@ -8,9 +8,19 @@
 
 import UIKit
 
-private let reuseIdentifier = "PhotoCell"
-
 class AFYPhotoesCollectionViewController: UICollectionViewController {
+    
+    struct ReuseIdentifier {
+        static let photoCell = "PhotoCell"
+        
+        private init() {}
+    }
+    
+    struct SegueIdentifier {
+        static let toDetails = "SegueToDetails"
+        
+        private init() {}
+    }
     
     var imageLinks = [URL?]()
 
@@ -32,7 +42,7 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AFYPhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.photoCell, for: indexPath) as! AFYPhotoCollectionViewCell
     
         let link = imageLinks[indexPath.row]
         cell.imageLink = link
@@ -41,7 +51,7 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-            case "SegueToDetails":
+            case SegueIdentifier.toDetails:
                 guard let cell = sender as? AFYPhotoCollectionViewCell else { return }
                 let controller = segue.destination as! AFYPhotoDetailsViewController
                 controller.imageLink = cell.imageLink

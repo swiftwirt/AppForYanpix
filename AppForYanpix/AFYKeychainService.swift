@@ -11,26 +11,28 @@ import KeychainSwift
 
 class AFYKeychainService
 {
-    enum Consts: String {
-        case token = "token"
+    struct Consts {
+        static let token = "token"
+        
+        private init() {}
     }
     
     let keychain = KeychainSwift()
     
     func saveToken(token: String)
     {
-        keychain.set(token, forKey: Consts.token.rawValue)
+        keychain.set(token, forKey: Consts.token)
     }
     
     func getToken() -> String?
     {
-        guard let token = keychain.get(Consts.token.rawValue) else {
+        guard let token = keychain.get(Consts.token) else {
             return nil
         }
         return token
     }
     
     func clear() {
-        self.keychain.delete(Consts.token.rawValue)
+        self.keychain.delete(Consts.token)
     }
 }
