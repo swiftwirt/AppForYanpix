@@ -12,11 +12,9 @@ class AFYPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageLink: URL! {
+    var location: Location! {
         didSet {
-            imageView.sd_setImage(with: imageLink)
+            imageView.sd_setImage(with: location.lowResolutionImageLink)
         }
     }
-    
-    var standartResolutionImageLink: URL!
 }

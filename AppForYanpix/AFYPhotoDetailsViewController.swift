@@ -12,7 +12,7 @@ class AFYPhotoDetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageLink: URL!
+    var location: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class AFYPhotoDetailsViewController: UIViewController {
     
     fileprivate func loadImage()
     {
-        imageView.sd_setImage(with: imageLink) { [weak self] (image, error, cacheType, url) in
+        imageView.sd_setImage(with: location.standartResolutionImageLink) { [weak self] (image, error, cacheType, url) in
             guard error == nil, self != nil else { return }
         }
     }

@@ -43,18 +43,13 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.photoCell, for: indexPath) as! AFYPhotoCollectionViewCell
-        var link = URL(string: "")
-        var standartResolutionLink = URL(string: "")
+        
         switch indexPath.row {
             case 0:
-            link = location.lowResolutionImageLink
-            standartResolutionLink = location.standartResolutionImageLink
+            cell.location = location
             default:
-            link = location.relatedLocations[indexPath.row - 1].lowResolutionImageLink
-            standartResolutionLink = location.relatedLocations[indexPath.row - 1].standartResolutionImageLink
+            cell.location = location.relatedLocations[indexPath.row - 1]
         }
-        cell.imageLink = link
-        cell.standartResolutionImageLink = standartResolutionLink
         return cell
     }
 
@@ -63,7 +58,7 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
             case SegueIdentifier.toDetails:
                 guard let cell = sender as? AFYPhotoCollectionViewCell else { return }
                 let controller = segue.destination as! AFYPhotoDetailsViewController
-                controller.imageLink = cell.standartResolutionImageLink
+                controller.location = cell.location
             default:
                 break
         }
