@@ -72,6 +72,8 @@ class AFYMainViewController: UIViewController {
                                                 let index = self.photoesLocations.index(of: compoundLocation)
                                                 let updatedLocation = compoundLocation
                                                 updatedLocation.imageLinks += location.imageLinks
+                                                updatedLocation.lowResolutionImageLinks += location.lowResolutionImageLinks
+                                                updatedLocation.standartResolutionImageLinks += location.standartResolutionImageLinks
                                                 updatedLocation.title = String(updatedLocation.imageLinks.count)
                                                 updatedLocation.subtitle = nil
                                                 self.photoesLocations[index!] = updatedLocation
