@@ -75,7 +75,7 @@
                 <viewControllerPlaceholder storyboardName="AFYPhotoesScene" id="Vzc-Ef-J8h" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3H-4k-QrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2336.25" y="138.38028169014083"/>
+            <point key="canvasLocation" x="2186" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZRz-Y1-puq">
