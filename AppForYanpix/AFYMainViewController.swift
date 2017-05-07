@@ -71,10 +71,8 @@ class AFYMainViewController: UIViewController {
                                             if compoundLocation.locationID == location.locationID {
                                                 let index = self.photoesLocations.index(of: compoundLocation)
                                                 let updatedLocation = compoundLocation
-                                                updatedLocation.imageLinks += location.imageLinks
-                                                updatedLocation.lowResolutionImageLinks += location.lowResolutionImageLinks
-                                                updatedLocation.standartResolutionImageLinks += location.standartResolutionImageLinks
-                                                updatedLocation.title = String(updatedLocation.imageLinks.count)
+                                                updatedLocation.relatedLocations.append(location)
+                                                updatedLocation.title = String(updatedLocation.relatedLocations.count + 1)
                                                 updatedLocation.subtitle = nil
                                                 self.photoesLocations[index!] = updatedLocation
                                                 continue outerloop
@@ -187,7 +185,7 @@ class AFYMainViewController: UIViewController {
             
             let button = sender as! UIButton
             let location = photoesLocations[button.tag]
-            controller.imageLinks = location.imageLinks
+            controller.location = location
         }
     }
     

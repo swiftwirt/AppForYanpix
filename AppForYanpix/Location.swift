@@ -33,9 +33,11 @@ class Location: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var locationID: String = ""
-    var imageLinks = [URL?]()
-    var lowResolutionImageLinks = [URL?]()
-    var standartResolutionImageLinks = [URL?]()
+    var imageLink: URL?
+    var lowResolutionImageLink: URL?
+    var standartResolutionImageLink: URL?
+    
+    var relatedLocations = [Location]()
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String)
     {
@@ -56,15 +58,15 @@ class Location: NSObject, MKAnnotation {
         
         let imageThumbnailDictionary = imageDictionary[JSONKey.thumbnail] as! [String: Any]
         var link = imageThumbnailDictionary[JSONKey.url] as! String
-        self.imageLinks.append(URL(string: link))
+        self.imageLink = URL(string: link)
         
         let imageLowResolutionDictionary = imageDictionary[JSONKey.lowResolution] as! [String: Any]
         link = imageLowResolutionDictionary[JSONKey.url] as! String
-        self.lowResolutionImageLinks.append(URL(string: link))
+        self.lowResolutionImageLink = URL(string: link)
         
         let imageStandartResolutionDictionary = imageDictionary[JSONKey.standardResolution] as! [String: Any]
         link = imageStandartResolutionDictionary[JSONKey.url] as! String
-        self.standartResolutionImageLinks.append(URL(string: link))
+        self.standartResolutionImageLink = URL(string: link)
         
         self.title = user[JSONKey.fullName] as? String
         self.subtitle = location[JSONKey.name] as? String

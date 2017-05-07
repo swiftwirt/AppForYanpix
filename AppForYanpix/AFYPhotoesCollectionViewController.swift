@@ -22,7 +22,7 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
         private init() {}
     }
     
-    var imageLinks = [URL?]()
+    var location: Location!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +38,23 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return imageLinks.count
+        return location.relatedLocations.count + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.photoCell, for: indexPath) as! AFYPhotoCollectionViewCell
-    
-        let link = imageLinks[indexPath.row]
+        var link = URL(string: "")
+        var standartResolutionLink = URL(string: "")
+        switch indexPath.row {
+            case 0:
+            link = location.lowResolutionImageLink
+            standartResolutionLink = location.standartResolutionImageLink
+            default:
+            link = location.relatedLocations[indexPath.row - 1].lowResolutionImageLink
+            standartResolutionLink = location.relatedLocations[indexPath.row - 1].standartResolutionImageLink
+        }
         cell.imageLink = link
+        cell.standartResolutionImageLink = standartResolutionLink
         return cell
     }
 
@@ -54,7 +63,7 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
             case SegueIdentifier.toDetails:
                 guard let cell = sender as? AFYPhotoCollectionViewCell else { return }
                 let controller = segue.destination as! AFYPhotoDetailsViewController
-                controller.imageLink = cell.imageLink
+                controller.imageLink = cell.standartResolutionImageLink
             default:
                 break
         }

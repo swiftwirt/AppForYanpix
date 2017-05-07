@@ -17,4 +17,6 @@ class AFYPhotoCollectionViewCell: UICollectionViewCell {
             imageView.sd_setImage(with: imageLink)
         }
     }
+    
+    var standartResolutionImageLink: URL!
 }
