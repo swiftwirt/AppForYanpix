@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iQG-Q0-xdM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Details View Controller-->
+        <scene sceneID="YiP-XL-Mxj">
+            <objects>
+                <viewController id="iQG-Q0-xdM" customClass="AFYPhotoDetailsViewController" customModule="AppForYanpix" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Bi-Ea-W1z"/>
+                        <viewControllerLayoutGuide type="bottom" id="7te-Uo-CBL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tvB-R4-P8o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4P4-ZG-SqQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4P4-ZG-SqQ" firstAttribute="top" secondItem="0Bi-Ea-W1z" secondAttribute="bottom" id="59N-JA-fGF"/>
+                            <constraint firstAttribute="trailing" secondItem="4P4-ZG-SqQ" secondAttribute="trailing" id="8NP-wI-SRj"/>
+                            <constraint firstItem="4P4-ZG-SqQ" firstAttribute="leading" secondItem="tvB-R4-P8o" secondAttribute="leading" id="AEm-5o-vR6"/>
+                            <constraint firstItem="7te-Uo-CBL" firstAttribute="top" secondItem="4P4-ZG-SqQ" secondAttribute="bottom" id="NHD-ZO-LRa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="4P4-ZG-SqQ" id="hVO-FG-t5J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDC-Cq-0DN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-228" y="114"/>
+        </scene>
+    </scenes>
+</document>

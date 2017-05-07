@@ -13,7 +13,7 @@
         <scene sceneID="3Xm-Ot-l63">
             <objects>
                 <collectionViewController id="5St-A6-S7J" customClass="AFYPhotoesCollectionViewController" customModule="AppForYanpix" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Rbq-Ez-1sG">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rbq-Ez-1sG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -21,11 +21,11 @@
                             <size key="itemSize" width="132" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="20" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="RHF-3g-gdt" customClass="AFYPhotoCollectionViewCell" customModule="AppForYanpix" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="132" height="128"/>
+                                <rect key="frame" x="10" y="20" width="132" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="132" height="128"/>
@@ -39,6 +39,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="mud-TH-sNh" id="4he-Ta-e9B"/>
+                                    <segue destination="mCg-gT-vDv" kind="show" identifier="SegueToDetails" id="eyH-nM-UMf"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -52,6 +53,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUd-NJ-MfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="818" y="132"/>
+        </scene>
+        <!--AFYPhotoDetailsScene-->
+        <scene sceneID="3Na-Be-5S6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AFYPhotoDetailsScene" id="mCg-gT-vDv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7d-dW-9KA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="131"/>
         </scene>
     </scenes>
 </document>
