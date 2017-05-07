@@ -148,9 +148,19 @@ class AFYMainViewController: UIViewController {
         }
     }
     
-    func showPhotoes()
+    func showPhotoes(_ sender: UIButton)
     {
-        // TODO: - add segue
+        performSegue(withIdentifier: "SegueToPhotoes", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueToPhotoes" {
+            let controller = segue.destination as! AFYPhotoesCollectionViewController
+            
+            let button = sender as! UIButton
+            let location = photoesLocations[button.tag]
+            controller.imageLinks = location.imageLinks
+        }
     }
 
     @IBAction func onPressedUseCurrentLocationButton(_ sender: Any)
@@ -177,8 +187,9 @@ extension AFYMainViewController: MKMapViewDelegate {
             annotationView?.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
             annotationView?.tintColor = UIColor(white: 0.0, alpha: 0.5)
             
-            let rightButton = UIButton(type: .detailDisclosure)
-            rightButton.addTarget(self, action: #selector(showPhotoes), for: .touchUpInside)
+            let rightButton = UIButton(frame: annotationView!.frame)
+            rightButton.setImage(#imageLiteral(resourceName: "icon_eye"), for: .normal)
+            rightButton.addTarget(self, action: #selector(showPhotoes(_:)), for: .touchUpInside)
             annotationView?.rightCalloutAccessoryView = rightButton
         } else {
             annotationView?.annotation = annotation
