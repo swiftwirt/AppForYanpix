@@ -18,6 +18,7 @@ class AFYMainViewController: UIViewController {
     
     fileprivate var applicationManager = AFYApplicationManager.instance()
 
+    // TODO: - ivestigate case with extremely wrongly rounded coordinates returned from instagram
     fileprivate var photoesLocations = [Location]()
     
     fileprivate var currentLocation: CLLocation? {
@@ -78,6 +79,12 @@ class AFYMainViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(revealRegionDetailsWithLongPressOnMap(_:)))
+        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     fileprivate func showLocations()
@@ -161,6 +168,15 @@ class AFYMainViewController: UIViewController {
             let location = photoesLocations[button.tag]
             controller.imageLinks = location.imageLinks
         }
+    }
+    
+    func revealRegionDetailsWithLongPressOnMap(_ sender: UILongPressGestureRecognizer)
+    {
+        if sender.state != UIGestureRecognizerState.began { return }
+        let touchLocation = sender.location(in: mapView)
+        let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+        currentLocation = CLLocation(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
     }
 
     @IBAction func onPressedUseCurrentLocationButton(_ sender: Any)
