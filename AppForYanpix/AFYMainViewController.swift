@@ -49,6 +49,8 @@ class AFYMainViewController: UIViewController {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(revealRegionDetailsWithLongPressOnMap(_:)))
         mapView.addGestureRecognizer(gestureRecognizer)
         
+        output.applicationManager.configureUser()
+        
         configureMyLocationButton()
     }
     // MARK: - Main methods

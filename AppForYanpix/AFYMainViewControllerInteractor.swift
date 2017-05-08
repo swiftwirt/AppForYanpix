@@ -13,7 +13,7 @@ class AFYMainViewControllerInteractor: NSObject {
     
     var output: AFYMainViewControllerPresenter!
     
-    fileprivate var applicationManager = AFYApplicationManager.instance()
+    var applicationManager = AFYApplicationManager.instance()
 
     // TODO: - ivestigate case with extremely wrongly rounded coordinates returned from instagram
     var photoesLocations = [Location]()

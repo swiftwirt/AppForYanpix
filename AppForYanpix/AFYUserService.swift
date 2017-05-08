@@ -17,6 +17,10 @@ class AFYUserService {
         return user?.username
     }
     
+    var avatarLink: URL? {
+        return user?.profilePicture
+    }
+    
     init(_with dictionary: [String: Any]) {
         user = User(_with: dictionary)
     }

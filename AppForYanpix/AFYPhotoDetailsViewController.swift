@@ -21,11 +21,20 @@ class AFYPhotoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
-        loadImage()
+        
+        applicationManager.firebaseService.observerResult = { (result) in
+            switch result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error ?? "")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadImage()
         UIApplication.shared.statusBarStyle = .lightContent
     }
     
@@ -40,8 +49,10 @@ class AFYPhotoDetailsViewController: UIViewController {
                 switch result {
                 case .success(let value):
                     print(value)
+                    guard let text = value as? String else { return }
+                    self?.applicationManager.firebaseService.save(text, for: userName)
                 case .failure(let error):
-                    print(error)
+                    print(error ?? "")
                 }
             })
         }

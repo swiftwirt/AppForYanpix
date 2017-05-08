@@ -9,4 +9,5 @@ target 'AppForYanpix' do
     pod 'SDWebImage', '~>3.8'
     pod 'Firebase/Storage'
     pod 'Firebase/Auth'
+    pod 'Firebase/Database'
 end

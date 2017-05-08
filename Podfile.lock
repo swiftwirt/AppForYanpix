@@ -6,6 +6,9 @@ PODS:
   - Firebase/Core (3.16.0):
     - FirebaseAnalytics (= 3.8.0)
     - FirebaseCore (= 3.6.0)
+  - Firebase/Database (3.16.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.1.2)
   - Firebase/Storage (3.16.0):
     - Firebase/Core
     - FirebaseStorage (= 1.1.0)
@@ -19,6 +22,8 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (3.6.0):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (3.1.2):
+    - FirebaseAnalytics (~> 3.7)
   - FirebaseInstanceID (1.0.10):
     - FirebaseCore (~> 3.6)
   - FirebaseStorage (1.1.0):
@@ -44,6 +49,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Firebase/Auth
+  - Firebase/Database
   - Firebase/Storage
   - KeychainSwift
   - PKHUD (~> 4.0)
@@ -55,6 +61,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
+  FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -63,6 +70,6 @@ SPEC CHECKSUMS:
   PKHUD: 957ce2a68b3c97a51839b30216120c1dbc0c3a78
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1be43a5eda90bd14397f574b3f39f5804dbb6eb1
+PODFILE CHECKSUM: 5e28886b7835fab6a17ba6970c65a96e90d35064
 
 COCOAPODS: 1.2.0

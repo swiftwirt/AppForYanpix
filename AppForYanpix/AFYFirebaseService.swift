@@ -11,7 +11,7 @@ import Firebase
 
 enum FirebaseResult<T> {
     case success(T)
-    case failure(Error)
+    case failure(Error?)
 }
 
 class AFYFirebaseService {
@@ -20,11 +20,15 @@ class AFYFirebaseService {
         static let users = "users"
         static let photos = "photos"
         static let contentType = "image/png"
+        static let imageLInks = "ImageLinks"
         
         private init() {}
     }
     
     fileprivate let storage = FIRStorage.storage()
+    fileprivate let database = FIRDatabase.database()
+    
+    var observerResult: ((FirebaseResult<Any>) -> ())?
     
     func upload(_ image: UIImage, for user: String, completionHandler: @escaping (FirebaseResult<Any>) -> ())
     {
@@ -40,8 +44,33 @@ class AFYFirebaseService {
         metadata.contentType = JSONFirebaseKey.contentType
         photoRef.put(imageData, metadata: metadata).observe(.success) { (snapshot) in
             // When the image has successfully uploaded, we get it's download URL
-            let text = snapshot.metadata?.downloadURL()?.absoluteString
-            print(text ?? "no upload link")
+            if let text = snapshot.metadata?.downloadURL()?.absoluteString {
+                print(text)
+                completionHandler(FirebaseResult.success(text))
+            } else {
+                completionHandler(FirebaseResult.failure(nil))
+            }
         }
+    }
+    
+    func save(_ string: String, for user: String)
+    {
+        let databaseRef = database.reference()
+        databaseRef.child(JSONFirebaseKey.imageLInks)
+        let userRef = databaseRef.child(user)
+        let imageRef = userRef.childByAutoId()
+        imageRef.setValue(string)
+        
+        userRef.observe(.value, with: { snapshot in
+            var links: [String] = []
+            for item in snapshot.children {
+                guard let snapshot = item as? FIRDataSnapshot else { continue }
+                let link = snapshot.description.components(separatedBy: ") ")[1]
+                links.append(link)
+            }
+            if let observer = self.observerResult {
+                observer(FirebaseResult.success(links))
+            }
+        })
     }
 }
