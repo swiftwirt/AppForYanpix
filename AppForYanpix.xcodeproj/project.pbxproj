@@ -24,6 +24,10 @@
 		D0787CB61EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB51EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift */; };
 		D0787CB81EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB71EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift */; };
 		D0787CBA1EC04B60008A2152 /* AFYApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB91EC04B60008A2152 /* AFYApplicationRouter.swift */; };
+		D0787CBE1EC07A0A008A2152 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0787CBD1EC07A0A008A2152 /* GoogleService-Info.plist */; };
+		D0787CC01EC07C44008A2152 /* AFYFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CBF1EC07C44008A2152 /* AFYFirebaseService.swift */; };
+		D0787CC21EC0A160008A2152 /* AFYUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CC11EC0A160008A2152 /* AFYUserService.swift */; };
+		D0787CC41EC0A227008A2152 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CC31EC0A227008A2152 /* User.swift */; };
 		D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */; };
 		D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */; };
 		D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */; };
@@ -53,6 +57,10 @@
 		D0787CB51EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewControllerInteractor.swift; sourceTree = "<group>"; };
 		D0787CB71EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewControllerPresenter.swift; sourceTree = "<group>"; };
 		D0787CB91EC04B60008A2152 /* AFYApplicationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYApplicationRouter.swift; sourceTree = "<group>"; };
+		D0787CBD1EC07A0A008A2152 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0787CBF1EC07C44008A2152 /* AFYFirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYFirebaseService.swift; sourceTree = "<group>"; };
+		D0787CC11EC0A160008A2152 /* AFYUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYUserService.swift; sourceTree = "<group>"; };
+		D0787CC31EC0A227008A2152 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYInstagramFeedService.swift; sourceTree = "<group>"; };
 		D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYLocationService.swift; sourceTree = "<group>"; };
 		D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +143,7 @@
 				D0409EBB1EBA472900393077 /* Assets.xcassets */,
 				D0409EBD1EBA472900393077 /* LaunchScreen.storyboard */,
 				D0409EC01EBA472900393077 /* Info.plist */,
+				D0787CBD1EC07A0A008A2152 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -145,6 +154,8 @@
 				D0409ECB1EBA50D900393077 /* AFYKeychainService.swift */,
 				D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */,
 				D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */,
+				D0787CBF1EC07C44008A2152 /* AFYFirebaseService.swift */,
+				D0787CC11EC0A160008A2152 /* AFYUserService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -204,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				D0843FD31EBC997B009265B8 /* Location.swift */,
+				D0787CC31EC0A227008A2152 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -282,6 +294,7 @@
 				D04649871EBF60FD00555C80 /* AFYPhotoDetailsScene.storyboard in Resources */,
 				D05C95EA1EBF3FC100AD6A7C /* AFYPhotoesScene.storyboard in Resources */,
 				D0409ED21EBA524700393077 /* AFYInitialScene.storyboard in Resources */,
+				D0787CBE1EC07A0A008A2152 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +358,7 @@
 				D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */,
 				D04649851EBF60AB00555C80 /* AFYPhotoDetailsViewController.swift in Sources */,
 				D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */,
+				D0787CC01EC07C44008A2152 /* AFYFirebaseService.swift in Sources */,
 				D05C95EE1EBF466E00AD6A7C /* AFYPhotoCollectionViewCell.swift in Sources */,
 				D0843FD41EBC997B009265B8 /* Location.swift in Sources */,
 				D0787CB41EC03ADE008A2152 /* AFYMainViewControllerConfigurator.swift in Sources */,
@@ -353,8 +367,10 @@
 				D0787CB81EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift in Sources */,
 				D0409EC91EBA4DFD00393077 /* AFYApplicationManager.swift in Sources */,
 				D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */,
+				D0787CC41EC0A227008A2152 /* User.swift in Sources */,
 				D0409ECC1EBA50D900393077 /* AFYKeychainService.swift in Sources */,
 				D0409ED01EBA51E300393077 /* AFYInitialViewController.swift in Sources */,
+				D0787CC21EC0A160008A2152 /* AFYUserService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

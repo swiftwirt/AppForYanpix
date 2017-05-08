@@ -25,7 +25,10 @@ class AFYInstagramFeedService {
         static let responseTypeToken = "&response_type=token"
         static let accessToken = "&access_token="
         static let separatorToken = "#access_token="
+        static let questionToken = "?access_token="
         static let version = "v1/"
+        static let users = "users/"
+        static let userSelf = "self/"
         static let locations = "locations/"
         static let search = "search?"
         static let latitude = "lat="
@@ -60,10 +63,10 @@ class AFYInstagramFeedService {
     }
     
     var needsShowCredentialsForm: Bool {
-        return applicationManager.keychain.getToken() == nil ? true : false
+        return keychainService.getToken() == nil ? true : false
     }
 
-    fileprivate let applicationManager = AFYApplicationManager.instance()
+    fileprivate let keychainService = AFYKeychainService()
     
     func saveToken(_from request: URLRequest)
     {
@@ -72,13 +75,13 @@ class AFYInstagramFeedService {
         if urlParts.count > 1 {
             let token = urlParts[1]
             print("***** token : \(token) ")
-            applicationManager.keychain.saveToken(token: token)
+            keychainService.saveToken(token: token)
         }
     }
     
     func getPhotosFor(locationID: String, completionHandler: @escaping (InstagramFeedResult<Any>) -> ())
     {
-        guard let token = applicationManager.keychain.getToken() else { return }
+        guard let token = keychainService.getToken() else { return }
         let url = EndPoint.baseUrl + EndPoint.version + EndPoint.locations + locationID + EndPoint.recentMedia + token
         // TODO: add normal error handling manager
         if Int(locationID) == 0 {
@@ -103,7 +106,7 @@ class AFYInstagramFeedService {
     
     func getLocationIDs(latitude: Float, and longitude: Float, completionHandler: @escaping (InstagramFeedResult<Any>) -> ())
     {
-        guard let token = applicationManager.keychain.getToken() else { return }
+        guard let token = keychainService.getToken() else { return }
         let url = EndPoint.baseUrl + EndPoint.version + EndPoint.locations
             + EndPoint.search + EndPoint.latitude + String(latitude)
             + EndPoint.longitude + String(longitude) + EndPoint.accessToken + token
@@ -113,6 +116,23 @@ class AFYInstagramFeedService {
             switch(response.result) {
             case .success(let value):
                 guard let dataDictionary = value as? [String: Any], let data = dataDictionary[JSONKey.data] as? [[String: Any]] else { return }
+                completionHandler(InstagramFeedResult.success(data))
+            case .failure(let error):
+                completionHandler(InstagramFeedResult.failure(error))
+            }
+        }
+    }
+    
+    func getUserJSON(completionHandler: @escaping (InstagramFeedResult<Any>) -> ())
+    {
+        guard let token = keychainService.getToken() else { return }
+        let url = EndPoint.baseUrl + EndPoint.version + EndPoint.users + EndPoint.userSelf + EndPoint.questionToken + token
+        
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: nil).responseJSON { (response: DataResponse<Any>) in
+            
+            switch(response.result) {
+            case .success(let value):
+                guard let dataDictionary = value as? [String: Any], let data = dataDictionary[JSONKey.data] as? [String: Any] else { return }
                 completionHandler(InstagramFeedResult.success(data))
             case .failure(let error):
                 completionHandler(InstagramFeedResult.failure(error))

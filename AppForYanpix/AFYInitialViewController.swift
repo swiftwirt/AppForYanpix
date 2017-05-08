@@ -42,6 +42,7 @@ class AFYInitialViewController: UIViewController, UIWebViewDelegate {
         // We need to show webView's request result ONLY when we don't have user token. 
         // Under no circumstances let user see redirection URI result!
         if !applicationManager.instagramFeedService.needsShowCredentialsForm {
+            applicationManager.configureUser()
             performSegue(withIdentifier: SegueIdentifier.toMainScene, sender: nil)
         }
         return applicationManager.instagramFeedService.needsShowCredentialsForm

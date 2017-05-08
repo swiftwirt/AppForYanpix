@@ -7,5 +7,6 @@ target 'AppForYanpix' do
     pod 'KeychainSwift'
     pod 'PKHUD', '~> 4.0'
     pod 'SDWebImage', '~>3.8'
-    pod 'Firebase/Storage'  
+    pod 'Firebase/Storage'
+    pod 'Firebase/Auth'
 end

@@ -32,6 +32,26 @@ class AFYApplicationManager {
         return service
     }()
     
+    lazy var firebaseService: AFYFirebaseService = {
+        let service = AFYFirebaseService()
+        return service
+    }()
+    
+    var userService: AFYUserService?
+    
+    func configureUser()
+    {
+        instagramFeedService.getUserJSON { (result) in
+            switch result {
+            case .success(let value):
+                guard let dictionary = value as? [String: Any] else { return }
+                self.userService = AFYUserService(_with: dictionary)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func clearKeychainIfThisIsTheFirstRun()
     {
         let defaults = UserDefaults.standard
