@@ -20,6 +20,7 @@ class AFYApplicationManager {
     }
     
     let keychain = AFYKeychainService()
+    let router = AFYApplicationRouter()
     
     lazy var locationService: AFYLocationService = {
         let service = AFYLocationService()
@@ -40,5 +41,15 @@ class AFYApplicationManager {
             keychain.clear()
             defaults.set(true, forKey: key)
         }
+    }
+    
+    func route()
+    {
+        guard keychain.getToken() != nil else {
+            router.showCredentialsScene()
+            return
+        }
+        
+        router.showMainScene()
     }
 }

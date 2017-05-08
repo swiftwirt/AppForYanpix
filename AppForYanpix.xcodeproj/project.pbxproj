@@ -23,6 +23,7 @@
 		D0787CB41EC03ADE008A2152 /* AFYMainViewControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB31EC03ADE008A2152 /* AFYMainViewControllerConfigurator.swift */; };
 		D0787CB61EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB51EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift */; };
 		D0787CB81EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB71EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift */; };
+		D0787CBA1EC04B60008A2152 /* AFYApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0787CB91EC04B60008A2152 /* AFYApplicationRouter.swift */; };
 		D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */; };
 		D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */; };
 		D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */; };
@@ -51,6 +52,7 @@
 		D0787CB31EC03ADE008A2152 /* AFYMainViewControllerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewControllerConfigurator.swift; sourceTree = "<group>"; };
 		D0787CB51EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewControllerInteractor.swift; sourceTree = "<group>"; };
 		D0787CB71EC03BBC008A2152 /* AFYMainViewControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewControllerPresenter.swift; sourceTree = "<group>"; };
+		D0787CB91EC04B60008A2152 /* AFYApplicationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYApplicationRouter.swift; sourceTree = "<group>"; };
 		D0843FC51EBC4CE7009265B8 /* AFYInstagramFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYInstagramFeedService.swift; sourceTree = "<group>"; };
 		D0843FC91EBC4EF5009265B8 /* AFYLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYLocationService.swift; sourceTree = "<group>"; };
 		D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D0409EB41EBA472900393077 /* AppDelegate.swift */,
+				D0787CB91EC04B60008A2152 /* AFYApplicationRouter.swift */,
 				D0409EC81EBA4DFD00393077 /* AFYApplicationManager.swift */,
 			);
 			name = "Application Layer";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0787CB61EC03B8C008A2152 /* AFYMainViewControllerInteractor.swift in Sources */,
+				D0787CBA1EC04B60008A2152 /* AFYApplicationRouter.swift in Sources */,
 				D0843FC61EBC4CE7009265B8 /* AFYInstagramFeedService.swift in Sources */,
 				D04649851EBF60AB00555C80 /* AFYPhotoDetailsViewController.swift in Sources */,
 				D0409EB51EBA472900393077 /* AppDelegate.swift in Sources */,

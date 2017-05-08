@@ -28,14 +28,16 @@ class AFYMainViewController: UIViewController {
     }
     
     struct Color {
-        static let pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+        static let pinTintColor = UIColor(red: 161.0 / 255.0, green: 192.0 / 255.0, blue: 87.0 / 255.0, alpha: 1)
         static let tintColor = UIColor(white: 0.0, alpha: 0.5)
-
+        
         private init() {}
     }
     
+    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var useCurrentLocationButton: UIButton!
+    @IBOutlet weak var myLocationButton: UIButton!
 
     // MARK: - Lifecycle
     
@@ -46,6 +48,8 @@ class AFYMainViewController: UIViewController {
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(revealRegionDetailsWithLongPressOnMap(_:)))
         mapView.addGestureRecognizer(gestureRecognizer)
+        
+        configureMyLocationButton()
     }
     // MARK: - Main methods
     
@@ -66,6 +70,15 @@ class AFYMainViewController: UIViewController {
     func showPhotoes(_ sender: UIButton)
     {
         performSegue(withIdentifier: SegueIdentifier.toPhotoes, sender: sender)
+    }
+    
+    // MARK: - Configuration
+    
+    fileprivate func configureMyLocationButton()
+    {
+        myLocationButton.layer.cornerRadius = 5.0
+        myLocationButton.layer.borderWidth = 2.0
+        myLocationButton.layer.borderColor = UIColor.orange.cgColor
     }
     
     // MARK: - Segue

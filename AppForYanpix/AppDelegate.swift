@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var applicationManager = AFYApplicationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        applicationManager.clearKeychainIfThisIsTheFirstRun()   
+        
+        applicationManager.clearKeychainIfThisIsTheFirstRun()
+        applicationManager.route()
+        
         return true
     }
 }
