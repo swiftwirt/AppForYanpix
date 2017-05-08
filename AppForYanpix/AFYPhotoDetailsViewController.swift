@@ -14,12 +14,20 @@ class AFYPhotoDetailsViewController: UIViewController {
     
     var location: Location!
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
         loadImage()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    // MARK: - Main methods
     
     fileprivate func loadImage()
     {
