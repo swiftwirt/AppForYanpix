@@ -13,17 +13,19 @@ import MapKit
 class AFYMainViewControllerPresenter: NSObject {
     
     weak var output: AFYMainViewController!
+    
+    var photoesLocations = [Location]()
 
     func showLocations()
     {
-        let region = regionForAnnotations(output.output.photoesLocations)
+        let region = regionForAnnotations(photoesLocations)
         output.mapView.setRegion(region, animated: true)
     }
     
     func updateLocations()
     {
         output.mapView.removeAnnotations(output.mapView.annotations)
-        output.mapView.addAnnotations(output.output.photoesLocations)
+        output.mapView.addAnnotations(photoesLocations)
     }
     
     fileprivate func regionForAnnotations(_ annotations: [MKAnnotation]) -> MKCoordinateRegion

@@ -16,7 +16,11 @@ class AFYMainViewControllerInteractor: NSObject {
     var applicationManager = AFYApplicationManager.instance()
 
     // TODO: - ivestigate case with extremely wrongly rounded coordinates returned from instagram
-    var photoesLocations = [Location]()
+    var photoesLocations = [Location]() {
+        didSet {
+            output.photoesLocations = photoesLocations
+        }
+    }
     
     var currentLocation: CLLocation? {
         didSet {
