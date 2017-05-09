@@ -27,6 +27,7 @@ class User {
     var profilePicture: URL?
     var bio: String?
     var website: URL?
+    var savedPhotoLinks: [String]?
     
     init(_with dictionary: [String: Any])
     {

@@ -41,6 +41,11 @@ class AFYMainViewController: UIViewController {
 
     // MARK: - Lifecycle
     
+    override func loadView() {
+        super.loadView()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

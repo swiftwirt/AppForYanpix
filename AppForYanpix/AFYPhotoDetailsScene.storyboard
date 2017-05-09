@@ -28,14 +28,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4P4-ZG-SqQ" firstAttribute="top" secondItem="0Bi-Ea-W1z" secondAttribute="bottom" id="59N-JA-fGF"/>
                             <constraint firstAttribute="trailing" secondItem="4P4-ZG-SqQ" secondAttribute="trailing" id="8NP-wI-SRj"/>
                             <constraint firstItem="4P4-ZG-SqQ" firstAttribute="leading" secondItem="tvB-R4-P8o" secondAttribute="leading" id="AEm-5o-vR6"/>
                             <constraint firstItem="7te-Uo-CBL" firstAttribute="top" secondItem="4P4-ZG-SqQ" secondAttribute="bottom" id="NHD-ZO-LRa"/>
+                            <constraint firstItem="4P4-ZG-SqQ" firstAttribute="top" secondItem="0Bi-Ea-W1z" secondAttribute="bottom" id="VbQ-rO-DvB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="waw-KW-0yb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sbV-hY-TBm">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onPressedSaveBarItem:" destination="iQG-Q0-xdM" id="1S7-ho-hEG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="4P4-ZG-SqQ" id="hVO-FG-t5J"/>
+                        <outlet property="saveBarItem" destination="sbV-hY-TBm" id="Myt-og-bHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDC-Cq-0DN" userLabel="First Responder" sceneMemberID="firstResponder"/>

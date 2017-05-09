@@ -21,6 +21,16 @@ class AFYUserService {
         return user?.profilePicture
     }
     
+    var userSavedPhotoLinks: [String]? {
+        get {
+            return user?.savedPhotoLinks
+        }
+        
+        set {
+            user?.savedPhotoLinks = userSavedPhotoLinks
+        }
+    }
+    
     init(_with dictionary: [String: Any]) {
         user = User(_with: dictionary)
     }
