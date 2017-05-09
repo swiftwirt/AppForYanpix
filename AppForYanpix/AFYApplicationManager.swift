@@ -46,6 +46,15 @@ class AFYApplicationManager {
             case .success(let value):
                 guard let dictionary = value as? [String: Any] else { return }
                 self.userService = AFYUserService(_with: dictionary)
+                self.firebaseService.getAllSavedPhotoLinks(for: (self.userService!.userName!)) { (result) in
+                    switch result {
+                    case .success(let value):
+                        guard let dictionary = value as? [String: Any] else { return }
+                        self.userService?.userSavedPhotoLinks = Array(dictionary.values) as! [String]
+                    case .failure(let error):
+                        print(error ?? "")
+                    }                    
+                }
             case .failure(let error):
                 print(error)
             }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 enum FirebaseResult<T> {
     case success(T)
@@ -15,6 +16,13 @@ enum FirebaseResult<T> {
 }
 
 class AFYFirebaseService {
+    
+    struct EndPoint {
+        static let baseUrl = "https://appforyanpix.firebaseio.com/"
+        static let postfix = ".json"
+        
+        private init() {}
+    }
     
     struct JSONFirebaseKey {
         static let users = "users"
@@ -72,5 +80,19 @@ class AFYFirebaseService {
                 observer(FirebaseResult.success(links))
             }
         })
+    }
+    
+    func getAllSavedPhotoLinks(for user: String, completionHandler: @escaping (FirebaseResult<Any>) -> ())
+    {
+        let url = EndPoint.baseUrl + user + EndPoint.postfix
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response: DataResponse<Any>) in
+            switch(response.result) {
+            case .success(let value):
+                completionHandler(FirebaseResult.success(value))
+            case .failure(let error):
+                completionHandler(FirebaseResult.failure(error))
+            }
+        }
     }
 }
