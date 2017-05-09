@@ -1,17 +1,17 @@
 //
-//  AFYPhotoesCollectionViewController.swift
+//  AFYSsavedPhotoesViewController.swift
 //  AppForYanpix
 //
-//  Created by Ivashin Dmitry on 5/7/17.
+//  Created by Ivashin Dmitry on 5/9/17.
 //  Copyright © 2017 Ivashin Dmitry. All rights reserved.
 //
 
 import UIKit
 
-class AFYPhotoesCollectionViewController: UICollectionViewController {
+class AFYSavedPhotoesViewController: UICollectionViewController {
     
     struct ReuseIdentifier {
-        static let photoCell = "PhotoCell"
+        static let photoCell = "SavedPhotoCell"
         
         private init() {}
     }
@@ -22,8 +22,8 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
         private init() {}
     }
     
-    var location: Location!
-
+    var links: [String]!
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -41,36 +41,29 @@ class AFYPhotoesCollectionViewController: UICollectionViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.statusBarStyle = .default
     }
-    
+
     // MARK: UICollectionViewDataSource
-    
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return location.relatedLocations.count + 1
+        return links.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.photoCell, for: indexPath) as! AFYPhotoCollectionViewCell
-        
-        switch indexPath.row {
-            case 0:
-            cell.location = location
-            default:
-            cell.location = location.relatedLocations[indexPath.row - 1]
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.photoCell, for: indexPath) as! AFYSavedPhotoViewCell
+        cell.link = links[indexPath.row]
         return cell
     }
-
-    // MARK: - Segue
+    
+    // MARK: - Segue 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-            case SegueIdentifier.toDetails:
-                guard let cell = sender as? AFYPhotoCollectionViewCell else { return }
-                let controller = segue.destination as! AFYPhotoDetailsViewController
-                controller.link = cell.location.standartResolutionImageLink
-            default:
-                break
+        case SegueIdentifier.toDetails:
+            guard let cell = sender as? AFYSavedPhotoViewCell, let url = URL(string: cell.link) else { return }
+            let controller = segue.destination as! AFYPhotoDetailsViewController
+            controller.link = url
+        default:
+            break
         }
     }
 }

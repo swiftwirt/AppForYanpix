@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mLv-Og-tlq">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,24 +18,24 @@
                         <viewControllerLayoutGuide type="bottom" id="e0R-qE-eUe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wqj-GO-Z2L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qO1-au-lSC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
                                     <outlet property="delegate" destination="OwO-LI-gax" id="mtk-lg-nIN"/>
                                 </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Long tap to pick place" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6E-Sg-un9">
-                                <rect key="frame" x="97" y="20" width="133" height="60"/>
+                                <rect key="frame" x="97" y="20" width="227" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" red="0.96454590559999998" green="0.48886227609999999" blue="0.46600008009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivv-dS-vKc">
-                                <rect key="frame" x="64" y="470" width="197" height="47"/>
+                                <rect key="frame" x="113" y="638" width="197" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.98038345579999997" green="0.92014457999999999" blue="0.80106576620000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -44,6 +44,14 @@
                                 </state>
                                 <connections>
                                     <action selector="onPressedUseCurrentLocationButton:" destination="OwO-LI-gax" eventType="touchUpInside" id="etf-FA-5K6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35B-bN-UhZ">
+                                <rect key="frame" x="332" y="28" width="57" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icon_cloud"/>
+                                <connections>
+                                    <segue destination="EUm-zD-zJ5" kind="show" identifier="SegueToFirebaseData" id="Qo3-Nw-CO1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -69,7 +77,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZW7-hD-30T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1666.875" y="138.38028169014083"/>
+        </scene>
+        <!--AFYSavedPhotoes-->
+        <scene sceneID="ULQ-Ih-jee">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AFYSavedPhotoes" id="EUm-zD-zJ5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yu4-bU-Cr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2163" y="117"/>
         </scene>
         <!--AFYPhotoesScene-->
         <scene sceneID="spI-g7-t7x">
@@ -77,7 +93,7 @@
                 <viewControllerPlaceholder storyboardName="AFYPhotoesScene" id="Vzc-Ef-J8h" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3H-4k-QrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186" y="138"/>
+            <point key="canvasLocation" x="2164" y="158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZRz-Y1-puq">
@@ -102,6 +118,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_cloud" width="16" height="16"/>
         <image name="icon_pin" width="32" height="32"/>
     </resources>
 </document>

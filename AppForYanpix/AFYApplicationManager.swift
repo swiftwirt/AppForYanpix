@@ -72,4 +72,18 @@ class AFYApplicationManager {
         
         router.showMainScene()
     }
+    
+    func addFirebaseObserver()
+    {
+        firebaseService.observerResult = { (result) in
+            switch result {
+            case .success(let value):
+                print(value)
+                guard let links = value as? [String] else { return }
+                self.userService?.userSavedPhotoLinks = links
+            case .failure(let error):
+                print(error ?? "")
+            }
+        }
+    }
 }

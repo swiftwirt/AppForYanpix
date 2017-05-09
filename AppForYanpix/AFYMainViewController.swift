@@ -17,6 +17,7 @@ class AFYMainViewController: UIViewController {
     
     struct SegueIdentifier {
         static let toPhotoes = "SegueToPhotoes"
+        static let toFirebaseData = "SegueToFirebaseData"
         
         private init() {}
     }
@@ -91,12 +92,20 @@ class AFYMainViewController: UIViewController {
     // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.toPhotoes {
+        switch segue.identifier! {
+        case SegueIdentifier.toPhotoes:
             let controller = segue.destination as! AFYPhotoesCollectionViewController
             
             let button = sender as! UIButton
             let location = output.photoesLocations[button.tag]
             controller.location = location
+        case SegueIdentifier.toFirebaseData:
+            let controller = segue.destination as! AFYSavedPhotoesViewController
+
+            let links = output.applicationManager.userService?.userSavedPhotoLinks
+            controller.links = links
+        default:
+            break
         }
     }
 

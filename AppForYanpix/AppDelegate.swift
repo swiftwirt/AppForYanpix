@@ -18,10 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        FIRApp.configure()
+        
         applicationManager.clearKeychainIfThisIsTheFirstRun()
         applicationManager.route()
         
-        FIRApp.configure()
+        applicationManager.addFirebaseObserver()    
         
         return true
     }

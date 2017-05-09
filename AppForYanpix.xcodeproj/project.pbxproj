@@ -33,6 +33,9 @@
 		D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */; };
 		D0843FD11EBC7353009265B8 /* AFYMainScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */; };
 		D0843FD41EBC997B009265B8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0843FD31EBC997B009265B8 /* Location.swift */; };
+		D094E8C01EC1A72100CB3835 /* AFYSavedPhotoes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D094E8BF1EC1A72100CB3835 /* AFYSavedPhotoes.storyboard */; };
+		D094E8C21EC1A77700CB3835 /* AFYSavedPhotoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094E8C11EC1A77700CB3835 /* AFYSavedPhotoesViewController.swift */; };
+		D094E8C41EC1A84F00CB3835 /* AFYSavedPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094E8C31EC1A84F00CB3835 /* AFYSavedPhotoViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		D0843FCE1EBC7338009265B8 /* AFYMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYMainViewController.swift; sourceTree = "<group>"; };
 		D0843FD01EBC7353009265B8 /* AFYMainScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AFYMainScene.storyboard; sourceTree = "<group>"; };
 		D0843FD31EBC997B009265B8 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D094E8BF1EC1A72100CB3835 /* AFYSavedPhotoes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AFYSavedPhotoes.storyboard; sourceTree = "<group>"; };
+		D094E8C11EC1A77700CB3835 /* AFYSavedPhotoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYSavedPhotoesViewController.swift; sourceTree = "<group>"; };
+		D094E8C31EC1A84F00CB3835 /* AFYSavedPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFYSavedPhotoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 		D0409ECD1EBA51A600393077 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D094E8BE1EC1A6FD00CB3835 /* Saved Photes Scene */,
 				D04649831EBF605000555C80 /* Photo Detail Scene */,
 				D05C95E81EBF3F9500AD6A7C /* Photoes Scene */,
 				D0843FCD1EBC7313009265B8 /* Main Scene */,
@@ -218,6 +225,16 @@
 				D0787CC31EC0A227008A2152 /* User.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D094E8BE1EC1A6FD00CB3835 /* Saved Photes Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D094E8BF1EC1A72100CB3835 /* AFYSavedPhotoes.storyboard */,
+				D094E8C11EC1A77700CB3835 /* AFYSavedPhotoesViewController.swift */,
+				D094E8C31EC1A84F00CB3835 /* AFYSavedPhotoViewCell.swift */,
+			);
+			name = "Saved Photes Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +308,7 @@
 				D0409EBF1EBA472900393077 /* LaunchScreen.storyboard in Resources */,
 				D0409EBC1EBA472900393077 /* Assets.xcassets in Resources */,
 				D0843FD11EBC7353009265B8 /* AFYMainScene.storyboard in Resources */,
+				D094E8C01EC1A72100CB3835 /* AFYSavedPhotoes.storyboard in Resources */,
 				D04649871EBF60FD00555C80 /* AFYPhotoDetailsScene.storyboard in Resources */,
 				D05C95EA1EBF3FC100AD6A7C /* AFYPhotoesScene.storyboard in Resources */,
 				D0409ED21EBA524700393077 /* AFYInitialScene.storyboard in Resources */,
@@ -361,6 +379,7 @@
 				D0787CC01EC07C44008A2152 /* AFYFirebaseService.swift in Sources */,
 				D05C95EE1EBF466E00AD6A7C /* AFYPhotoCollectionViewCell.swift in Sources */,
 				D0843FD41EBC997B009265B8 /* Location.swift in Sources */,
+				D094E8C21EC1A77700CB3835 /* AFYSavedPhotoesViewController.swift in Sources */,
 				D0787CB41EC03ADE008A2152 /* AFYMainViewControllerConfigurator.swift in Sources */,
 				D05C95EC1EBF400A00AD6A7C /* AFYPhotoesCollectionViewController.swift in Sources */,
 				D0843FCF1EBC7338009265B8 /* AFYMainViewController.swift in Sources */,
@@ -368,6 +387,7 @@
 				D0409EC91EBA4DFD00393077 /* AFYApplicationManager.swift in Sources */,
 				D0843FCA1EBC4EF5009265B8 /* AFYLocationService.swift in Sources */,
 				D0787CC41EC0A227008A2152 /* User.swift in Sources */,
+				D094E8C41EC1A84F00CB3835 /* AFYSavedPhotoViewCell.swift in Sources */,
 				D0409ECC1EBA50D900393077 /* AFYKeychainService.swift in Sources */,
 				D0409ED01EBA51E300393077 /* AFYInitialViewController.swift in Sources */,
 				D0787CC21EC0A160008A2152 /* AFYUserService.swift in Sources */,

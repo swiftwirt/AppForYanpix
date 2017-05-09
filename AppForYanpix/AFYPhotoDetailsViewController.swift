@@ -16,7 +16,7 @@ class AFYPhotoDetailsViewController: UIViewController {
     
     fileprivate var applicationManager = AFYApplicationManager.instance()
     
-    var location: Location!
+    var link: URL?
     
     // MARK: - Lifecycle
     
@@ -24,7 +24,6 @@ class AFYPhotoDetailsViewController: UIViewController {
         super.viewDidLoad()
         navigationController!.setNavigationBarHidden(false, animated: false)
         saveBarItem.isEnabled = false
-        addFirebaseObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +44,7 @@ class AFYPhotoDetailsViewController: UIViewController {
                 print(value)
                 guard let text = value as? String else { HUD.flash(.error); return }
                 self?.applicationManager.firebaseService.save(text, for: userName)
+                HUD.flash(.success)
             case .failure(let error):
                 print(error ?? "")
                 HUD.flash(.error)
@@ -54,26 +54,11 @@ class AFYPhotoDetailsViewController: UIViewController {
     
     fileprivate func loadImage()
     {
-        imageView.sd_setImage(with: location.standartResolutionImageLink) { [weak self] (image, error, cacheType, url) in
+        guard let url = link else { return }
+        imageView.sd_setImage(with: url) { [weak self] (image, error, cacheType, url) in
             guard error == nil, self != nil else { return }
             DispatchQueue.main.async {
                 self?.saveBarItem.isEnabled = true
-            }
-        }
-    }
-    
-    func addFirebaseObserver()
-    {
-        applicationManager.firebaseService.observerResult = { (result) in
-            switch result {
-            case .success(let value):
-                print(value)
-                guard let links = value as? [String] else { HUD.flash(.error); return }
-                self.applicationManager.userService?.userSavedPhotoLinks = links
-                HUD.flash(.success)
-            case .failure(let error):
-                print(error ?? "")
-                HUD.flash(.error)
             }
         }
     }
