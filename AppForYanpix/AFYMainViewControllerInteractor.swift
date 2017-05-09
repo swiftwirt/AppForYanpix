@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import PKHUD
 
 class AFYMainViewControllerInteractor: NSObject {
     
@@ -24,17 +25,19 @@ class AFYMainViewControllerInteractor: NSObject {
     
     var currentLocation: CLLocation? {
         didSet {
+           HUD.show(.progress)
            applicationManager.instagramFeedService.getLocationIDs(latitude: Float(self.currentLocation!.coordinate.latitude), and: Float(self.currentLocation!.coordinate.longitude)) { (result) in
                 switch result {
                 case .success(let value):
-                    guard let data = value as? [[String: Any]] else { return }
+                    guard let data = value as? [[String: Any]] else { HUD.flash(.error); return }
                     let semaphore = DispatchSemaphore(value: 0)
                     DispatchQueue.global(qos: .background).async {
                         self.photoesLocations = [Location]()
                         for location in data {
                             print(location)
                             guard let id = location["id"] as? String else {
-                                semaphore.signal();
+                                HUD.flash(.error)
+                                semaphore.signal()
                                 return
                             }
                             self.applicationManager.instagramFeedService.getPhotosFor(locationID: id, completionHandler: { (result) in
@@ -42,7 +45,8 @@ class AFYMainViewControllerInteractor: NSObject {
                                 case .success(let data):
                                     print("***** !!!! \(data)")
                                     guard let dictArray = data as? [[String: Any]] else {
-                                        semaphore.signal();
+                                        HUD.flash(.error)
+                                        semaphore.signal()
                                         return
                                     }
                                     outerloop: for item in dictArray {
@@ -71,11 +75,13 @@ class AFYMainViewControllerInteractor: NSObject {
                             semaphore.wait()
                         }
                         DispatchQueue.main.async {
+                            HUD.flash(.success)
                             self.output.updateLocations()
                             self.output.showLocations()
                         }
                     }
                 case .failure(let error):
+                    HUD.flash(.error);
                     print(error)
                 }
             }
