@@ -62,6 +62,7 @@ class AFYSavedPhotoesViewController: UICollectionViewController {
             guard let cell = sender as? AFYSavedPhotoViewCell, let url = URL(string: cell.link) else { return }
             let controller = segue.destination as! AFYPhotoDetailsViewController
             controller.link = url
+            controller.isInSavedPhotoesMode = true
         default:
             break
         }

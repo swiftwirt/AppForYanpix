@@ -17,6 +17,7 @@ class AFYPhotoDetailsViewController: UIViewController {
     fileprivate var applicationManager = AFYApplicationManager.instance()
     
     var link: URL?
+    var isInSavedPhotoesMode = false
     
     // MARK: - Lifecycle
     
@@ -58,7 +59,9 @@ class AFYPhotoDetailsViewController: UIViewController {
         imageView.sd_setImage(with: url) { [weak self] (image, error, cacheType, url) in
             guard error == nil, self != nil else { return }
             DispatchQueue.main.async {
-                self?.saveBarItem.isEnabled = true
+                if !self!.isInSavedPhotoesMode {
+                    self!.saveBarItem.isEnabled = true
+                }
             }
         }
     }

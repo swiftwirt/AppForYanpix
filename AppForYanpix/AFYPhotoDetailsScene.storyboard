@@ -35,7 +35,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="waw-KW-0yb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sbV-hY-TBm">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="sbV-hY-TBm">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onPressedSaveBarItem:" destination="iQG-Q0-xdM" id="1S7-ho-hEG"/>
