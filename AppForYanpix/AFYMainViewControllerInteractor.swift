@@ -75,6 +75,7 @@ class AFYMainViewControllerInteractor: NSObject {
                             semaphore.wait()
                         }
                         DispatchQueue.main.async {
+                            guard self.photoesLocations.count > 0 else { HUD.flash(.error); return }
                             HUD.flash(.success)
                             self.output.updateLocations()
                             self.output.showLocations()
