@@ -55,8 +55,6 @@ class AFYInstagramFeedService {
         let urlString = EndPoint.baseUrl + EndPoint.authorize + EndPoint.clientID
             + EndPoint.redirectURI + EndPoint.responseTypeCode + EndPoint.responseTypeToken
             + EndPoint.scope + EndPoint.scopeBasic + EndPoint.scopePublicContent
-            + EndPoint.scopeFollowerList + EndPoint.scopeComments + EndPoint.scopeRelationships
-            + EndPoint.scopeLikes
         guard let url = URL(string: urlString) else { return nil }
         let request = URLRequest(url: url)
         return request

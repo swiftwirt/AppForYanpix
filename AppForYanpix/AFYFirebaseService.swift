@@ -72,8 +72,8 @@ class AFYFirebaseService {
         userRef.observe(.value, with: { snapshot in
             var links: [String] = []
             for item in snapshot.children {
-                guard let snapshot = item as? FIRDataSnapshot else { continue }
-                let link = snapshot.description.components(separatedBy: ") ")[1]
+                guard let snapshot = item as? FIRDataSnapshot, let link = snapshot.value as? String else { continue }
+                
                 links.append(link)
             }
             if let observer = self.observerResult {
